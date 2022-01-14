@@ -20,10 +20,10 @@ function ConvertHandler() {
         result = "L";
         break;
       case "lbs":
-        result = "Kg";
+        result = "kg";
         break;
       case "mi":
-        result = "Km";
+        result = "km";
         break;
     }
     return result;
@@ -31,7 +31,25 @@ function ConvertHandler() {
 
   this.spellOutUnit = function (unit) {
     let result;
-
+    switch (unit) {
+      case "mi":
+        result = "miles";
+        break;
+      case "km":
+        result = "kilometers";
+        break;
+      case "lbs":
+        result = "pounds";
+        break;
+      case "kg":
+        result = "kilograms";
+        break;
+      case "gal":
+        result = "gallons";
+        break;
+      case "L":
+        result = "liters";
+    }
     return result;
   };
 
@@ -47,17 +65,17 @@ function ConvertHandler() {
         break;
       case "lbs":
         result.num = roundNum(initNum * lbsToKg);
-        result.unit = "Kg";
+        result.unit = "kg";
         break;
       case "mi":
         result.num = roundNum(initNum * miToKm);
-        result.unit = "Km";
+        result.unit = "km";
         break;
     }
     return result;
   };
 
-  function roundN(num) {
+  function roundNum(num) {
     let n = 5;
     return parseFloat(
       Math.round(num * Math.pow(10, n)) / Math.pow(10, n)
@@ -65,7 +83,9 @@ function ConvertHandler() {
   }
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
     let result;
-
+    result = `${initNum} ${this.spellOutUnit(
+      initUnit
+    )} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
     return result;
   };
 }
