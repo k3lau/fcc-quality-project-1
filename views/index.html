@@ -51,6 +51,8 @@
               $('#result').text(data.string || data);
               $('#jsonResult').text(JSON.stringify(data));
             }
+          }).done(res => {
+            console.log(res);
           });
         });
       });
