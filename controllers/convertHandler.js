@@ -8,8 +8,8 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     let result;
-    let regex = /[+-]?\d+(\.\d+)?/g;
-    result = input.replace(regex, "");
+    let regex = /[a-zA-Z%]+/g;
+    result = input.match(regex)[0];
     return result;
   };
 
