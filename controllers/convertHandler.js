@@ -71,6 +71,18 @@ function ConvertHandler() {
         result.num = roundNum(initNum * miToKm);
         result.unit = "km";
         break;
+      case "L":
+        result.num = roundNum(initNum / galToL);
+        result.unit = "gal";
+        break;
+      case "kg":
+        result.num = roundNum(initNum / lbsToKg);
+        result.unit = "lbs";
+        break;
+      case "km":
+        result.num = roundNum(initNum / miToKm);
+        result.unit = "mi";
+        break;
     }
     return result;
   };

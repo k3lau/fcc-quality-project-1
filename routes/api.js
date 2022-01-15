@@ -16,6 +16,7 @@ module.exports = function (app) {
       returnNum,
       returnUnit
     );
+    console.log(req.query.input);
     console.log(inputNum);
     console.log(inputUnit);
     console.log(returnNum);
