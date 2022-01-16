@@ -2,7 +2,12 @@ function ConvertHandler() {
   this.getNum = function (input) {
     let result;
     let regex = /[+-]?(\d+)?(\.\d+)?(\/[+-]?(\d+)?(\.\d+)?)?/g;
+    result = input.match(regex);
+    if (result.length > 1 && result[1] !== '') {
+      return "invalid number"
+    }
     result = input.match(regex)[0];
+
     if (result.indexOf("/") > -1) {
       let fractionNum = result.split('/');
       result = parseFloat(fractionNum[0]) / parseFloat(fractionNum[1]);
@@ -20,23 +25,34 @@ function ConvertHandler() {
 
   this.getReturnUnit = function (initUnit) {
     let result;
-    switch (initUnit) {
+    switch (initUnit.toLowerCase()) {
       case "gal":
         result = "L";
+        break;
+      case "l":
+        result = "gal";
         break;
       case "lbs":
         result = "kg";
         break;
+      case "kg":
+        result = "lbs";
+        break;
       case "mi":
         result = "km";
         break;
+      case "km":
+        result = "mi";
+        break;
+      default:
+        result = 'invalid unit'
     }
     return result;
   };
 
   this.spellOutUnit = function (unit) {
     let result;
-    switch (unit) {
+    switch (unit.toLowerCase()) {
       case "mi":
         result = "miles";
         break;
@@ -54,6 +70,8 @@ function ConvertHandler() {
         break;
       case "L":
         result = "liters";
+      default:
+        result = 'invalid unit'
     }
     return result;
   };
@@ -63,7 +81,7 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result = {};
-    switch (initUnit) {
+    switch (initUnit.toLowerCase()) {
       case "gal":
         result.num = roundNum(initNum * galToL);
         result.unit = "L";
@@ -76,7 +94,7 @@ function ConvertHandler() {
         result.num = roundNum(initNum * miToKm);
         result.unit = "km";
         break;
-      case "L":
+      case "l":
         result.num = roundNum(initNum / galToL);
         result.unit = "gal";
         break;
