@@ -3,7 +3,7 @@ function ConvertHandler() {
     let result;
     let regex = /[+-]?(\d+)?(\.\d+)?(\/[+-]?(\d+)?(\.\d+)?)?/g;
     result = input.match(regex);
-    console.log(result)
+    console.log(`getNum input ${input} and ${result}`)
     if (result.length > 1 && result[1] !== '') {
       return "invalid number"
     }
@@ -120,6 +120,7 @@ function ConvertHandler() {
       Math.round(num * Math.pow(10, n)) / Math.pow(10, n)
     ).toFixed(n);
   }
+
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
     let result;
     result = `${initNum} ${this.spellOutUnit(
