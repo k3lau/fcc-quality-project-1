@@ -26,6 +26,7 @@ function ConvertHandler() {
     let regex = /[a-zA-Z%]+/g;
     result = input.match(regex)[0];
     if (result === 'l') { result = "L" }
+    else if (result === 'L') { result = result }
     else { result = result.toLowerCase() }
     return result;
   };
