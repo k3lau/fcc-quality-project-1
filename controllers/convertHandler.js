@@ -140,7 +140,7 @@ function ConvertHandler() {
     let n = 5;
     return parseFloat(
       Math.round(num * Math.pow(10, n)) / Math.pow(10, n)
-    ).toFixed(n);
+    );
   }
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
