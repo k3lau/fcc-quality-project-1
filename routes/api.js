@@ -21,18 +21,22 @@ module.exports = function (app) {
       returnNum,
       returnUnit
     );
-    console.log(stringOut);
+    console.log(`Stringout ${stringOut}`);
     //initNum: inputNum
     //initUnit: inputUnit
     //returnNum: convertHandler.convert(inputNum, inputUnit).num,
     //returnUnit: convertHandler.convert(inputNum, inputUnit).unit
     //console.log(req.query);
-    res.json({
-      initNum: inputNum,
-      initUnit: inputUnit,
-      returnNum: returnNum,
-      returnUnit: returnUnit,
-      string: stringOut,
-    });
+    if (stringOut.indexOf("invalid") > -1) {
+      res.send(stringOut)
+    } else {
+      res.json({
+        initNum: inputNum,
+        initUnit: inputUnit,
+        returnNum: returnNum,
+        returnUnit: returnUnit,
+        string: stringOut,
+      })
+    };
   });
 };

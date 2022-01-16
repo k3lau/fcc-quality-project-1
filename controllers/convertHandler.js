@@ -29,7 +29,10 @@ function ConvertHandler() {
   this.getUnit = function (input) {
     let result;
     let regex = /[a-zA-Z%]+/g;
-    result = input.match(regex)[0];
+    result = input.match(regex);
+    if (result === null) {
+      return "invalid unit"
+    }
     //Set l to L and everything else in lowercase
     if (result.toLowerCase() === 'l') { result = "L" }
     else { result = result.toLowerCase() }
