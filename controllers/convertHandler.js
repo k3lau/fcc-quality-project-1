@@ -21,7 +21,7 @@ function ConvertHandler() {
     let result;
     let regex = /[a-zA-Z%]+/g;
     result = input.match(regex)[0];
-    if (result === 'l') { result = "L" }
+    if (result === 'L') { result = "l" }
     return result;
   };
 
