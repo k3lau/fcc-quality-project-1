@@ -3,7 +3,7 @@ function ConvertHandler() {
     let result;
     let regex = /[+-]?(\d+)?(\.\d+)?(\/[+-]?(\d+)?(\.\d+)?)?/g;
     result = input.match(regex);
-    console.log(`getNum input ${input} and ${result}`)
+    //console.log(`getNum input ${input} and ${result}`)
     //Check for invalid number like 3/3/3 or 2.2.2
     //  The match will be '3/3' and '/3' or '2.2' and '.2'
     if (result.length > 1 && result[1] !== '') {
@@ -11,6 +11,8 @@ function ConvertHandler() {
     }
     result = input.match(regex)[0];
 
+    //Default value to 1 for empty string
+    if (result === "") { result = "1" }
     //Parse fraction string to float number
     if (result.indexOf("/") > -1) {
       let fractionNum = result.split('/');
@@ -20,9 +22,7 @@ function ConvertHandler() {
       result = parseFloat(result)
     }
 
-    //Default value to 1 for empty string
-    if (result === null || result === "") { result = 1 }
-    console.log(`getNum output ${result}`)
+    //console.log(`getNum output ${result}`)
     return result;
   };
 
@@ -100,7 +100,7 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     let result = {};
     result.unit = this.getReturnUnit(initUnit);
-    if (result.unit.toLowerCase() !== "invalid unit" || initNum !== "invalid number") {
+    if (result.unit.toLowerCase() !== "invalid unit" && initNum !== "invalid number") {
       switch (initUnit.toLowerCase()) {
         case "gal":
           result.num = roundNum(initNum * galToL);
