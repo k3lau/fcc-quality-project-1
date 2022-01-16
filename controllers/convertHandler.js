@@ -3,6 +3,7 @@ function ConvertHandler() {
     let result;
     let regex = /[+-]?(\d+)?(\.\d+)?(\/[+-]?(\d+)?(\.\d+)?)?/g;
     result = input.match(regex);
+    console.log(result)
     if (result.length > 1 && result[1] !== '') {
       return "invalid number"
     }
@@ -68,8 +69,9 @@ function ConvertHandler() {
       case "gal":
         result = "gallons";
         break;
-      case "L":
+      case "l":
         result = "liters";
+        break;
       default:
         result = 'invalid unit'
     }
@@ -107,6 +109,7 @@ function ConvertHandler() {
         result.unit = "mi";
         break;
     }
+    console.log(`Input ${initNum} ${initUnit} and ${result}`)
     return result;
   };
 
