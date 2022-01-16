@@ -28,6 +28,8 @@ function ConvertHandler() {
     if (result === 'l') { result = "L" }
     else if (result === 'L') { result = result }
     else { result = result.toLowerCase() }
+    let check = this.getReturnUnit(result);
+    if (check == "invalid unit") { result = check }
     return result;
   };
 
@@ -90,33 +92,26 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result = {};
+    result.unit = this.getReturnUnit(initUnit);
     switch (initUnit.toLowerCase()) {
       case "gal":
         result.num = roundNum(initNum * galToL);
-        result.unit = "L";
         break;
       case "lbs":
         result.num = roundNum(initNum * lbsToKg);
-        result.unit = "kg";
         break;
       case "mi":
         result.num = roundNum(initNum * miToKm);
-        result.unit = "km";
         break;
       case "l":
         result.num = roundNum(initNum / galToL);
-        result.unit = "gal";
         break;
       case "kg":
         result.num = roundNum(initNum / lbsToKg);
-        result.unit = "lbs";
         break;
       case "km":
         result.num = roundNum(initNum / miToKm);
-        result.unit = "mi";
         break;
-      default:
-        result.unit = "invalid unit"
     }
     if (result.num === undefined) {
       result.num = "invalid number"
