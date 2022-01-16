@@ -13,6 +13,9 @@ function ConvertHandler() {
       let fractionNum = result.split('/');
       result = parseFloat(fractionNum[0]) / parseFloat(fractionNum[1]);
     }
+    else {
+      result = parseFloat(result)
+    }
     if (result === null || result === "") { result = 1 }
     return result;
   };
@@ -109,8 +112,13 @@ function ConvertHandler() {
         result.num = roundNum(initNum / miToKm);
         result.unit = "mi";
         break;
+      default:
+        result.unit = "invalid unit"
     }
-    console.log(`Input ${initNum} ${initUnit} and ${result}`)
+    if (result.num === undefined) {
+      result.num = "invalid number"
+    }
+    console.log(`Input ${initNum} ${initUnit} and ${result.num} and ${result.unit}`)
     return result;
   };
 
