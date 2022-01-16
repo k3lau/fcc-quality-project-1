@@ -17,6 +17,7 @@ function ConvertHandler() {
       result = parseFloat(result)
     }
     if (result === null || result === "") { result = 1 }
+    console.log(`getNum output ${result}`)
     return result;
   };
 
