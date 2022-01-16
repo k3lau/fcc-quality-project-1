@@ -1,3 +1,5 @@
+const { resolveObjectURL } = require("buffer");
+
 function ConvertHandler() {
   this.getNum = function (input) {
     let result;
@@ -32,6 +34,8 @@ function ConvertHandler() {
     result = input.match(regex);
     if (result === null) {
       return "invalid unit"
+    } else {
+      result = input.match(regex)[0]
     }
     //Set l to L and everything else in lowercase
     if (result.toLowerCase() === 'l') { result = "L" }
