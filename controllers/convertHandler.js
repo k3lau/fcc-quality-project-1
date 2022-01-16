@@ -18,10 +18,10 @@ function ConvertHandler() {
     //Parse fraction string to float number
     if (result.indexOf("/") > -1) {
       let fractionNum = result.split('/');
-      result = parseFloat(fractionNum[0]) / parseFloat(fractionNum[1]);
+      result = roundNum(parseFloat(fractionNum[0]) / parseFloat(fractionNum[1]));
     }
     else {
-      result = parseFloat(result)
+      result = roundNum(parseFloat(result))
     }
 
     //console.log(`getNum output ${result}`)
