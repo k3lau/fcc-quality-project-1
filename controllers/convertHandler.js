@@ -1,8 +1,13 @@
 function ConvertHandler() {
   this.getNum = function (input) {
     let result;
-    let regex = /[+-]?\d+(\.\d+)?/g;
+    let regex = /[+-]?(\d+)?(\.\d+)?(\/[+-]?(\d+)?(\.\d+)?)?/g;
     result = input.match(regex)[0];
+    if (result.indexOf("/") > -1) {
+      let fractionNum = result.split('/');
+      result = parseFloat(fractionNum[0]) / parseFloat(fractionNum[1]);
+    }
+    if (result === null || result === "") { result = 1 }
     return result;
   };
 
