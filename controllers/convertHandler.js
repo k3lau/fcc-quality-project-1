@@ -152,7 +152,7 @@ function ConvertHandler() {
       result = initNum
     }
     else if (initUnit === 'invalid unit') {
-      result = initNum
+      result = initUnit
     }
     else {
       result = `${initNum} ${this.spellOutUnit(
